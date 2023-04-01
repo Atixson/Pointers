@@ -1,4 +1,5 @@
-//TransferParameters
+//TransferParameters 
+//transfer Parameters by value
 #include<iostream>
 using namespace std;
 
