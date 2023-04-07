@@ -8,7 +8,7 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int n;
-	cout << "Введите количество элементов массива : "; cin >> n;
+	cout << "Введите количество элементов массива: "; cin >> n;
 	int* arr = new int[n];
 	FillRand(arr, n);
 	Print(arr, n);

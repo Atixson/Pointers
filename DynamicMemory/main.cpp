@@ -36,6 +36,16 @@ void main()
 	arr = pop_front(arr, n);
 	Print(arr, n);
 
+	int index_insert;
+	cout << "Введите индекс для добавления элемента: "; cin >> index_insert;
+	arr = insert(arr, n, value, index_insert);
+	Print(arr, n);
+
+	int index_erase;
+	cout << "Введите индекс для удаления элемента: "; cin >> index_erase;
+	arr = erase(arr, n, index_erase);
+	Print(arr, n);
+
 	delete[] arr;
 }
 
@@ -121,27 +131,34 @@ int* insert(int arr[], int& n, int value, int index_insert)
 		{
 			buffer[i] = arr[i];
 		}
-		buffer[i + 1] = arr[i];
+		else if (i == index_insert)
+		{
+			buffer[i] = value;
+		}
+		else if (i > index_insert)
+		{
+			buffer[i] = arr[i - 1];
+		}
 	}
 	delete[] arr;
 	arr = buffer;
-	buffer[index_insert - 1] = value;
 	n++;
 	return arr;
 }
 int* erase(int arr[], int& n, int index_erase)
 {
-	int* buffer = new int[n - 1];
+	int* buffer = new int[--n];
 	for (int i = 0; i < n; i++)
 	{
 		if (i < index_erase)
 		{
 			buffer[i] = arr[i];
 		}
-		buffer[i + 1] = arr[i + 2];
+		else
+		{
+			buffer[i] = arr[i + 1];
+		}
 	}
 	delete[] arr;
-	arr = buffer;
-	n--;
-	return arr;
+	return buffer;
 }
